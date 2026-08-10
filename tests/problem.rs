@@ -1,6 +1,9 @@
 use std::collections::BTreeMap;
 
-use truthmill::ir::{DomainId, Problem, Program, SymmetryGenerator, TensorId};
+use truthmill::ir::{
+    Code, Coefficient, DomainId, Einsum, IndexId, Problem, Program, SymmetryGenerator, TensorId,
+    ValueDef, ValueId, ValueRef,
+};
 
 #[test]
 fn represents_minimal_problem_semantics() {
@@ -11,7 +14,18 @@ fn represents_minimal_problem_semantics() {
     let problem = Problem {
         sizes: BTreeMap::from([(DomainId(0), 10), (DomainId(1), 5)]),
         symmetries: BTreeMap::from([(TensorId(0), vec![antisymmetric.clone()])]),
-        reference: Program::default(),
+        reference: Program {
+            values: vec![ValueDef::Einsum(Einsum {
+                coeff: Coefficient::from_integer(1.into()),
+                code: Code {
+                    inputs: vec![vec![IndexId(0), IndexId(1)]],
+                    output: vec![IndexId(0), IndexId(1)],
+                    domains: BTreeMap::from([(IndexId(0), DomainId(0)), (IndexId(1), DomainId(1))]),
+                },
+                args: vec![ValueRef::Tensor(TensorId(0))],
+            })],
+            outputs: vec![ValueId(0)],
+        },
     };
 
     assert_eq!(problem.sizes[&DomainId(1)], 5);

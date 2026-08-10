@@ -34,7 +34,7 @@ fn represents_explicit_ssa_sharing() {
                 args: vec![ValueRef::Value(ValueId(0)), ValueRef::Value(ValueId(0))],
             }),
         ],
-        outputs: vec![ValueRef::Value(ValueId(1))],
+        outputs: vec![ValueId(1)],
     };
 
     let ValueDef::LinComb(lincomb) = &program.values[1] else {

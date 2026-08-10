@@ -38,7 +38,7 @@ pub enum ValueRef {
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct Program {
     pub values: Vec<ValueDef>,
-    pub outputs: Vec<ValueRef>,
+    pub outputs: Vec<ValueId>,
 }
 
 /// The single definition of one tensor value.
