@@ -8,8 +8,8 @@ model.
 
 ## Common conventions
 
-- Domain `0` is the occupied orbital space `O`, with example size 10.
-- Domain `1` is the virtual orbital space `V`, with example size 50.
+- Domain `0` is the occupied orbital space `O`, with example size 1000.
+- Domain `1` is the virtual orbital space `V`, with example size 5000.
 - `i` through `n` denote `O`; `a` through `f` denote `V` in the descriptions
   below. These names are documentation only. JSON stores local integer index
   IDs and their domains.
