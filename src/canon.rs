@@ -67,7 +67,7 @@ fn canonicalize_term(
                 .map(|&position| factors[position].clone())
                 .collect();
             let candidate = Term {
-                coeff: term.coeff.clone(),
+                coeff: term.coeff,
                 factors: normalize_indices(ordered, output),
             };
 
@@ -269,7 +269,7 @@ fn compare_term_bodies(left: &Term, right: &Term) -> Ordering {
 }
 
 fn is_zero(coeff: &Coefficient) -> bool {
-    coeff == &Coefficient::from_integer(0.into())
+    coeff == &Coefficient::from_integer(0)
 }
 
 #[cfg(test)]

@@ -62,7 +62,7 @@ pub(crate) fn expand(program: &Program) -> Vec<Polynomial> {
 fn expand_einsum(einsum: &Einsum, values: &[Polynomial]) -> Polynomial {
     let mut next_id = next_private_id(&einsum.code);
     let mut terms = vec![Term {
-        coeff: einsum.coeff.clone(),
+        coeff: einsum.coeff,
         factors: Vec::new(),
     }];
 
@@ -110,7 +110,7 @@ fn reference_polynomial(reference: ValueRef, input: &[Index], values: &[Polynomi
         ValueRef::Tensor(tensor) => Polynomial {
             output: input.to_vec(),
             terms: vec![Term {
-                coeff: Coefficient::from_integer(1.into()),
+                coeff: Coefficient::from_integer(1),
                 factors: vec![Factor {
                     tensor,
                     indices: input.to_vec(),

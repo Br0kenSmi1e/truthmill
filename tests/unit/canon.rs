@@ -4,7 +4,7 @@ use super::*;
 use crate::model::DomainId;
 
 fn integer(value: i64) -> Coefficient {
-    Coefficient::from_integer(value.into())
+    Coefficient::from_integer(value)
 }
 
 fn index(id: u64, domain: u32) -> Index {

@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use truthmill::*;
 
 fn one() -> Coefficient {
-    Coefficient::from_integer(1.into())
+    Coefficient::from_integer(1)
 }
 
 #[test]

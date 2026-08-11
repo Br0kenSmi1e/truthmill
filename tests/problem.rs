@@ -16,7 +16,7 @@ fn represents_minimal_problem_semantics() {
         symmetries: BTreeMap::from([(TensorId(0), vec![antisymmetric.clone()])]),
         reference: Program {
             values: vec![ValueDef::Einsum(Einsum {
-                coeff: Coefficient::from_integer(1.into()),
+                coeff: Coefficient::new(1, 2),
                 code: Code {
                     inputs: vec![vec![IndexId(0), IndexId(1)]],
                     output: vec![IndexId(0), IndexId(1)],
@@ -30,4 +30,12 @@ fn represents_minimal_problem_semantics() {
 
     assert_eq!(problem.sizes[&DomainId(1)], 5);
     assert_eq!(problem.symmetries[&TensorId(0)], [antisymmetric]);
+
+    let json = problem.to_json().unwrap();
+    let value: serde_json::Value = serde_json::from_str(&json).unwrap();
+    assert_eq!(
+        value["reference"]["values"][0]["Einsum"]["coeff"],
+        serde_json::json!([1, 2])
+    );
+    assert_eq!(Problem::from_json(&json).unwrap(), problem);
 }

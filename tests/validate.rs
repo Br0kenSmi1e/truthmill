@@ -4,7 +4,7 @@ use truthmill::*;
 use truthmill::{ValidationError, validate};
 
 fn one() -> Coefficient {
-    Coefficient::from_integer(1.into())
+    Coefficient::from_integer(1)
 }
 
 fn valid_problem() -> Problem {

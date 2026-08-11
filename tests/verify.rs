@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use truthmill::*;
 
 fn integer(value: i64) -> Coefficient {
-    Coefficient::from_integer(value.into())
+    Coefficient::from_integer(value)
 }
 
 fn contraction_problem() -> Problem {
