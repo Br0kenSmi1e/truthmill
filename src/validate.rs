@@ -76,9 +76,6 @@ pub enum ValidationError {
         output: usize,
         value: ValueId,
     },
-    UnusedTensor {
-        tensor: TensorId,
-    },
     InvalidSymmetrySign {
         tensor: TensorId,
         generator: usize,
@@ -183,12 +180,6 @@ impl fmt::Display for ValidationError {
                 write!(
                     f,
                     "program output {output} references missing value {value:?}"
-                )
-            }
-            Self::UnusedTensor { tensor } => {
-                write!(
-                    f,
-                    "declared tensor {tensor:?} is not used by the reference program"
                 )
             }
             Self::InvalidSymmetrySign {
@@ -433,7 +424,7 @@ fn validate_symmetries(
 ) -> Result<(), ValidationError> {
     for (&tensor, generators) in &problem.symmetries {
         let Some(&rank) = tensor_ranks.get(&tensor) else {
-            return Err(ValidationError::UnusedTensor { tensor });
+            continue;
         };
 
         for (generator, symmetry) in generators.iter().enumerate() {

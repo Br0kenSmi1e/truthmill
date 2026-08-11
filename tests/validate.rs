@@ -371,16 +371,11 @@ fn rejects_an_invalid_symmetry_permutation() {
 }
 
 #[test]
-fn rejects_a_declared_but_unused_tensor() {
+fn accepts_a_declared_but_unused_tensor() {
     let mut problem = valid_problem();
     problem.symmetries.insert(TensorId(2), vec![]);
 
-    assert_eq!(
-        validate(&problem),
-        Err(ValidationError::UnusedTensor {
-            tensor: TensorId(2),
-        })
-    );
+    assert_eq!(validate(&problem), Ok(()));
 }
 
 #[test]
