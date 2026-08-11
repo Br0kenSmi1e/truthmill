@@ -2,7 +2,7 @@
 
 use std::collections::{BTreeMap, btree_map::Entry};
 
-use crate::ir::{
+use crate::model::{
     Code, Coefficient, DomainId, Einsum, IndexId, LinComb, Program, TensorId, ValueDef, ValueRef,
 };
 

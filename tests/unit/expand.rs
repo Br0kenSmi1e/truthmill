@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use super::*;
-use crate::ir::{Einsum, LinComb, ValueId};
+use crate::model::{Einsum, LinComb, ValueId};
 
 fn integer(value: i64) -> Coefficient {
     Coefficient::from_integer(value.into())

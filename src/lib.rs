@@ -1,6 +1,6 @@
 //! A trusted verifier and cost evaluator for tensor programs.
 
-pub mod ir;
+mod model;
 
 // Canonical verification will consume this module; its behavior is exercised
 // directly until that pipeline is connected.
@@ -8,4 +8,8 @@ pub mod ir;
 mod expand;
 mod validate;
 
+pub use model::{
+    Code, Coefficient, DomainId, Einsum, IndexId, LinComb, Problem, Program, SymmetryGenerator,
+    TensorId, ValueDef, ValueId, ValueRef,
+};
 pub use validate::{ValidationError, validate};

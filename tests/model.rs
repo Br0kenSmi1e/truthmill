@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use truthmill::ir::*;
+use truthmill::*;
 
 fn one() -> Coefficient {
     Coefficient::from_integer(1.into())

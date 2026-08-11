@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use truthmill::ir::*;
+use truthmill::*;
 use truthmill::{ValidationError, validate};
 
 fn one() -> Coefficient {

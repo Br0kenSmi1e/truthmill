@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use truthmill::ir::{
+use truthmill::{
     Code, Coefficient, DomainId, Einsum, IndexId, Problem, Program, SymmetryGenerator, TensorId,
     ValueDef, ValueId, ValueRef,
 };

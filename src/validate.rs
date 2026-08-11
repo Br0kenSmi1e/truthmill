@@ -4,7 +4,7 @@ use std::collections::{BTreeMap, BTreeSet};
 use std::error::Error;
 use std::fmt;
 
-use crate::ir::{Code, DomainId, IndexId, Problem, TensorId, ValueDef, ValueId, ValueRef};
+use crate::model::{Code, DomainId, IndexId, Problem, TensorId, ValueDef, ValueId, ValueRef};
 
 /// A reason that a [`Problem`] is not well formed.
 #[derive(Clone, Debug, PartialEq, Eq)]
