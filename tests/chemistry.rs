@@ -1,4 +1,4 @@
-use truthmill::{Problem, log_flops, validate, verify};
+use truthmill::{Problem, log_flops, symbolic_flops, validate, verify};
 
 const PROBLEMS: &[(&str, &str)] = &[
     ("MP3", include_str!("../examples/chemistry/mp3.json")),
@@ -24,6 +24,9 @@ fn chemistry_problems_are_valid_and_scorable() {
         validate(&problem).unwrap_or_else(|error| panic!("invalid {name}: {error}"));
         log_flops(&problem, &problem.reference)
             .unwrap_or_else(|error| panic!("failed to score {name}: {error}"));
+        let symbolic = symbolic_flops(&problem, &problem.reference)
+            .unwrap_or_else(|error| panic!("failed to symbolically score {name}: {error}"));
+        assert!(!symbolic.is_zero(), "{name} has zero symbolic FLOPs");
     }
 }
 

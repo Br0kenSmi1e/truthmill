@@ -8,7 +8,7 @@ mod expand;
 mod validate;
 mod verify;
 
-pub use cost::{CostError, log_flops};
+pub use cost::{CostError, FlopTerm, SymbolicFlops, log_flops, symbolic_flops};
 pub use model::{
     Code, Coefficient, DomainId, Einsum, IndexId, LinComb, Problem, Program, SymmetryGenerator,
     TensorId, ValueDef, ValueId, ValueRef,

@@ -1,4 +1,4 @@
-//! Floating-point operation counts for tensor SSA programs.
+//! Numerical floating-point operation counts for tensor SSA programs.
 
 use std::error::Error;
 use std::fmt;
@@ -6,7 +6,7 @@ use std::fmt;
 use crate::model::{Problem, Program, ValueDef};
 use crate::validate::{ValidationError, validate};
 
-/// A failure to evaluate the FLOP cost of a program.
+/// A failure to evaluate the numerical FLOP cost of a program.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum CostError {
     Invalid(ValidationError),
